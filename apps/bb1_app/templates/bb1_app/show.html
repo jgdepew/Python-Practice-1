@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Your Vacation</title>
+</head>
+<body>
+
+	<div id="header">
+		<a href="{% url 'belt:index' %}">Home</a>
+		<a href="{% url 'belt:logout' %}">Logout</a>
+	</div>
+
+	<div id="plans">
+		<h3>{{trip.destination}}</h3>
+		<p>Planned by: {{trip.planned_by.name}}</p>
+		<p>Travel Date From: {{trip.date_start}}</p>
+		<p>Travel Date To: {{trip.date_end}}</p>
+	</div>
+	{{trip.id}}
+	<h4>Users Joining {{trip.planned_by.name}}</h4>
+	{% for user in users %}
+		<p>{{user.name}}</p>
+	{% endfor %}
+</body>
+</html>

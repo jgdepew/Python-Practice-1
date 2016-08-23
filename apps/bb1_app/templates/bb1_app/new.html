@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add a Trip</title>
+</head>
+<body>
+
+	<div id="header">
+		<a href="{% url 'belt:index' %}">Home</a>
+		<a href="{% url 'belt:logout' %}">Logout</a>
+	</div>
+
+	<h3>Add A Trip</h3>
+	<form method="post" action="{% url 'belt:index' %}">
+		{% csrf_token %}
+		<p>Destination: <input type="text" name="destination"></p>
+		<p>Description: <input type="text" name="description"></p>
+		<p>Travel Date From: <input type="date" name="date_start"></p>
+		<p>Travel Date To: <input type="date" name="date_end"></p>
+		<p><input type="submit" name="Add"></p>
+	</form>
+
+	{% if messages %}
+	<ul class="messages">
+	    {% for message in messages %}
+	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	    {% endfor %}
+	</ul>
+	{% endif %}
+
+</body>
+</html>
